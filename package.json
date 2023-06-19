@@ -1,6 +1,6 @@
 {
   "name": "next-rate-limit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Coldry",
   "license": "MIT",
   "scripts": {
@@ -9,7 +9,7 @@
     "dev": "tsup --watch",
     "prettier:format": "prettier --write .",
     "prettier:check": "prettier --check \"**/*.{ts,tsx,json}\"",
-    "postinstall": "husky install"
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
