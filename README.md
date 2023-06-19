@@ -6,9 +6,11 @@ Update to [next.js Api Route Limiting Example](https://github.com/vercel/next.js
 
 ```sh
 # Using npm
-> npm install https://github.com/coldry-io/next-rate-limit.git
-# Using yarn or pnpm
-> yarn/pnpm add https://github.com/coldry-io/next-rate-limit.git
+> npm install next-rate-limit
+# Using yarn
+> yarn add next-rate-limit
+# Using pnpm
+> pnpm add next-rate-limit
 ```
 
 ## Usage
@@ -23,17 +25,14 @@ import rateLimit from 'next-rate-limit';
 
 ```ts
 import rateLimit from 'next-rate-limit';
-
 import { NextRequest, NextResponse } from 'next/server';
-
-import rateLimit from '@/lib/utils/rateLimit';
 
 const limiter = rateLimit({
   interval: 60 * 1000, // 1 minute
   uniqueTokenPerInterval: 500 // Max 500 users per minute
 });
 
-export async function GET(req: NextRequest) {
+export function GET(req: NextRequest) {
   try {
     const headers = limiter.checkNext(req, 10);
 
@@ -65,5 +64,7 @@ Defaults to `60000` ms (= 1 minute).
 ### `uniqueTokenPerInterval`
 
 > `number`
+
+See [lru-cache max](https://github.com/isaacs/node-lru-cache#max-read-only)
 
 Defaults to `500`.
